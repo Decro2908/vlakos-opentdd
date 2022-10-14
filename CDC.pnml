@@ -1,0 +1,61 @@
+
+// Item
+item(FEAT_TRAINS, CDC, 5510) {
+    property {
+        // Informace
+        name:                           string(STR_CDC_NAME);
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              var_CDC_INTRODUCTION;
+        track_type:                     RAIL;
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN;
+        dual_headed:                    1;
+
+        // Specifikace
+        speed:                          120 km/h;
+        power:                          POWER_IN_KW(var_CDC_POWER);
+        weight:                         var_CDC_WEIGHT;
+        tractive_effort_coefficient:    0.25;
+        air_drag_coefficient:           0.01;
+
+        // Modelos
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   30;
+        retire_early:                   0;
+        reliability_decay:              0;
+
+        // Kapacita
+        cargo_capacity:                 1;
+        refittable_cargo_classes:       NO_CARGO_CLASS;
+        non_refittable_cargo_classes:   NO_CARGO_CLASS;
+        cargo_allow_refit:              [PASS];
+        cargo_disallow_refit:           [];
+
+        // Cena
+        refit_cost:                     0;
+        running_cost_base:              RUNNING_COST_DIESEL;
+
+        // Barvy,vlajky
+        ai_special_flag:                AI_FLAG_PASSENGER;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_FLIP);
+        bitmask_vehicle_info:           0;
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    }
+    graphics {
+        default:                        sw_CDC_engine;
+        purchase:                       sw_CDC_purchase;
+
+        speed:                          sw_CDC_speed;
+        cost_factor:                    sw_CDC_cost;
+        running_cost_factor:            sw_CDC_runningcost;
+        cargo_capacity:                 sw_CDC_capacity;
+        purchase_cargo_capacity:        sw_CDC_purchase_capacity;
+        loading_speed:                  sw_CDC_loadingspeed;
+
+        can_attach_wagon:               sw_CDC_attach;
+        cargo_subtype_text:             sw_CDC_cargo_subtype_text;
+        additional_text:                string(STR_REFIT_ADDITIONAL_ABLE);
+    }
+   
+}
+// KONEC
